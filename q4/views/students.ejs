@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Students</title>
+</head>
+<body>
+    <h1>Students</h1>
+    <form action="/students" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="number" name="age" placeholder="Age" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <button type="submit">Add Student</button>
+    </form>
+    <ul>
+        <% students.forEach(student => { %>
+            <li>
+                <%= student.name %> - <%= student.age %> - <%= student.email %>
+                <form action="/students/delete/<%= student._id %>" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+    <form action="/logout" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+</body>
+</html>
